@@ -23,3 +23,6 @@ jobs:
 
       - name: Run tests
         run: npm test -- --watchAll=false
+      - name: Trigger Render Deploy Hook
+        run: |
+          curl -X POST https://api.render.com/deploy/srv-d1ubofumcj7s73ecb3a0?key=oNnqdopRpJY
