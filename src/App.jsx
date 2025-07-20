@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
-      <h1>React Sum Calculator test</h1>
+      <h1>React Sum Calculator test2</h1>
       <input
         type="number"
         value={num1}
