@@ -33,7 +33,7 @@ pipeline {
     }
     stage('Docker Push') {
       steps {
-        withCredentials([string(credentialsId: 'dockerhub-pass', variable: 'DOCKER_PASS')]) {
+        withCredentials([string(credentialsId: 'DOCKER_PASSWORD', variable: 'DOCKER_PASS')]) {
           sh """
             echo "$DOCKER_PASS" | docker login -u adarshsonar --password-stdin
             docker push adarshsonar/my-react-app:latest
