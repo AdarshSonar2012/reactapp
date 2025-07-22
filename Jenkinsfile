@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Clone') {
       steps {
-        git branch: 'main', url: 'https://github.com/AdarshSonar2012/reactapp'
+        git 'https://github.com/AdarshSonar2012/reactapp'
       }
     }
     stage('Install') {
