@@ -6,11 +6,6 @@ pipeline {
   }
 
   stages {
-    stage('Clone') {
-      steps {
-        git 'https://github.com/AdarshSonar2012/reactapp'
-      }
-    }
     stage('Install') {
       steps {
         sh 'npm install'
