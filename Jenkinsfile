@@ -35,8 +35,8 @@ pipeline {
       steps {
         withCredentials([string(credentialsId: 'dockerhub-pass', variable: 'DOCKER_PASS')]) {
           sh """
-            echo "$DOCKER_PASS" | docker login -u yourusername --password-stdin
-            docker push yourusername/yourimage:latest
+            echo "$DOCKER_PASS" | docker login -u adarshsonar --password-stdin
+            docker push adarshsonar/my-react-app:latest
           """
         }
       }
