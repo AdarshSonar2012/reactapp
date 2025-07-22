@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Clone') {
       steps {
-        git 'https://github.com/AdarshSonar2012/reactapp'
+        git branch: 'main', url: 'https://github.com/AdarshSonar2012/reactapp'
       }
     }
     stage('Install') {
@@ -28,7 +28,7 @@ pipeline {
     }
     stage('Docker Build') {
       steps {
-        sh 'docker build -t yourusername/yourimage:latest .'
+        sh 'docker build -t adarshsonar/my-react-app:latest .'
       }
     }
     stage('Docker Push') {
