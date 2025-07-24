@@ -36,5 +36,10 @@ pipeline {
         }
       }
     }
+    stage('Trigger Render Deploy') {
+            steps {
+                sh 'curl -X POST https://api.render.com/deploy/srv-d211veje5dus738cs6v0?key=Q_eaQ8-M14E'
+            }
+        }
   }
 }
