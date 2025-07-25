@@ -1,21 +1,15 @@
-# Base image
-FROM node:18-alpine
-
-# Set working directory
+# Build stage
+FROM node:18-alpine as builder
 WORKDIR /app
-
-# Copy dependencies
-COPY package*.json ./
-RUN npm install
-
-# Copy rest of the app
 COPY . .
-
-# Build the Vite app
+RUN npm install
 RUN npm run build
 
-# Install lightweight static server
+# Serve stage
+FROM node:18-alpine
+WORKDIR /app
 RUN npm install -g serve
-
-# Serve the build folder (Vite outputs to `dist`)
+COPY --from=builder /app/dist /app/dist
+EXPOSE 3000
 CMD ["serve", "-s", "dist", "-l", "3000"]
+
