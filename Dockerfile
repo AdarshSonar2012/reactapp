@@ -14,6 +14,11 @@ COPY . .
 # Build Vite app
 RUN npm run build
 
+# second stage
+FROM node:18-alpine
+
+WORKDIR /app
+
 # Install static file server
 RUN npm install -g serve
 COPY --from=builder /app/dist ./dist
