@@ -13,9 +13,9 @@ COPY . .
 
 # Build Vite app
 RUN npm run build
-COPY --from=builder /app/dist ./dist
+
 # Install static file server
 RUN npm install -g serve
-
+COPY --from=builder /app/dist ./dist
 # Serve the built app (dist folder) on port 80
 CMD ["serve", "-s", "dist", "-l", "80"]
