@@ -13,7 +13,7 @@ COPY . .
 
 # Build Vite app
 RUN npm run build
-
+COPY --from=builder /app/dist ./dist
 # Install static file server
 RUN npm install -g serve
 
