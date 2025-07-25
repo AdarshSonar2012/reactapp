@@ -1,15 +1,21 @@
-# Build stage
-FROM node:18-alpine as builder
+# Use official Node image
+FROM node:18-alpine
+
+# Set working directory
 WORKDIR /app
-COPY . .
+
+# Copy dependencies and install
+COPY package*.json ./
 RUN npm install
+
+# Copy the rest of the source code
+COPY . .
+
+# Build Vite app
 RUN npm run build
 
-# Serve stage
-FROM node:18-alpine
-WORKDIR /app
+# Install static file server
 RUN npm install -g serve
-COPY --from=builder /app/dist /app/dist
-EXPOSE 3000
-CMD ["serve", "-s", "dist", "-l", "3000"]
 
+# Serve the built app (dist folder) on port 80
+CMD ["serve", "-s", "dist", "-l", "80"]
